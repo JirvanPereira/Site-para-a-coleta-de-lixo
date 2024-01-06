@@ -1,0 +1,184 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+html{
+    background:url(/imagens/FUNDO.png) no-repeat;
+    height: 800px;
+}
+
+.content2 {
+    display: flex;
+    
+    
+    min-height: 100vh;
+    width: 100%;
+    
+    background-position: center;
+    background-size: cover;
+}
+footer{
+    background-color: beige;
+    color: rgb(255, 0, 0);
+    padding: 13px;
+    margin-left: -10px;
+    margin-right: -10px;
+    text-align: center;
+    
+}
+main h2{
+    background-color:rgb(29, 177, 177);
+    padding-left: 50px;
+    color: aliceblue;
+    
+    
+}
+
+
+body {
+    height: 120vh;
+    
+    background-position: 29vw bottom;
+   
+
+    
+}
+header span{
+   
+    border-radius: 3px;
+    color: white;
+    padding: 10px;
+    margin-left: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+ body .content2 {
+    width: 90%;
+    max-width: 1100px;
+    
+    margin: 0 auto;
+    display: flex;
+    
+
+   }
+
+
+body header {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ header a {
+display: flex;
+
+
+color: var(--title-color);
+font-weight:700;
+}
+
+header a span {
+margin-right:16px;    
+display: flex;
+width: 20px;
+height:20px;   
+padding: 6px; 
+
+
+}
+
+main {
+flex: 1;
+display: flex;
+flex-direction: column;
+justify-content: center;
+max-width: 560px;    
+
+}
+
+main h1 {
+font-size: 54px;
+color: white;
+}
+
+main p {
+    font-size: 15;
+    
+    color: white;
+    margin-bottom: 100px;
+    margin-left: 50px;
+    
+}
+main a{
+    background-color: orange;
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 90px;
+    text-decoration: none;
+    display: flex;
+    
+    
+
+    
+    
+    
+}
+
+header img{
+    margin-left: 300px;
+}
+#meupau{
+    position: absolute;
+    margin-left: 500px;
+}
+
+.contact-btn2{
+    background-color: orange;
+    padding:1px 23px 1px 23px ;
+    font-weight: 900;
+    font-size: 15px;
+    color: white;
+    margin-left: 200px;
+    margin-bottom: 250px;
+    text-align: center;
+    text-decoration: none;
+    
+    
+}
+
+
+
+
+
+
+ main a span {     /* PAI*/
+width: 72px;
+height: 72px;
+
+border-top-left-radius: 8px;      /*Borda topo esquerdo*/
+border-bottom-left-radius: 8px;   /*Borda Rodapé Esquerdo*/
+
+
+background-color: rgba(0, 0, 0, 0.08);   /* RGB 0-255 A 0-1 Cor com transparência*/
+
+display: flex; /* colocar um ao lado do outro*/
+align-items: center; /* alinhar itens no centro*/
+justify-content: center; /* justifique os itens no centro*/
+
+}
+    
+
+ main a strong {
+flex: 1;              /*preenchimnto automato em todo espaço vazio*/
+color: white;
+text-align: center;
+}

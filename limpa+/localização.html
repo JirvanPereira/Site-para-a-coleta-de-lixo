@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Obter Localização em Tempo Real</title>
+</head>
+<body>
+    <h1>Obter Localização em Tempo Real</h1>
+    <p>Clique no botão abaixo para obter sua localização:</p>
+    <button id="getLocationButton">Obter Localização</button>
+    <p id="locationOutput"></p>
+
+    <script>
+        // Verifica se o navegador suporta a API de Geolocalização
+        if ("geolocation" in navigator) {
+            // Obtém a referência ao botão
+            var getLocationButton = document.getElementById("getLocationButton");
+            // Adiciona um ouvinte de evento para o clique no botão
+            getLocationButton.addEventListener("click", obterLocalizacao);
+        } else {
+            // Navegador não suporta Geolocalização
+            alert("Geolocalização não suportada pelo seu navegador");
+        }
+
+        function obterLocalizacao() {
+            // Solicita a localização do usuário
+            navigator.geolocation.getCurrentPosition(function (position) {
+                // Obtém as coordenadas de latitude e longitude
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                // Exibe as coordenadas na página
+                var locationOutput = document.getElementById("locationOutput");
+                locationOutput.innerHTML = "Sua localização atual é:<br>Latitude: " + latitude + "<br>Longitude: " + longitude;
+            }, function (error) {
+                // Tratamento de erros
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        locationOutput.innerHTML = "Permissão para Geolocalização negada pelo usuário.";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        locationOutput.innerHTML = "Informações de localização indisponíveis.";
+                        break;
+                    case error.TIMEOUT:
+                        locationOutput.innerHTML = "Tempo limite expirado ao obter a localização.";
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        locationOutput.innerHTML = "Erro desconhecido ao obter a localização.";
+                        break;
+                }
+            });
+        }
+    </script>
+</body>
+</html>

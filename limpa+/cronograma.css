@@ -1,0 +1,295 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+html{
+    background:url(/imagens/FUNDO.png) no-repeat;
+    height: 800px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+
+header {
+    background-color: #272a24;
+    
+    width: 1410px;
+    box-shadow: 0px 3px 10px #464646;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 6rem;
+    margin-right: 50px;
+}
+img{
+    padding-bottom: -30px;
+    padding-top: -40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    color: #fff;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+.nav-item:hover{
+    color: rgb(0, 0, 0);
+}
+
+.nav-list ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 1.15rem;
+    color: #fff;
+    font-weight: 400;
+}
+
+.login-button button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #0187a7;
+}
+
+.login-button button a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.mobile-menu-icon {
+    display: none;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+@media screen and (max-width: 730px) {
+    .nav-bar {
+        padding: 1.5rem 4rem;
+    }
+    .nav-item {
+        display: none;
+    }
+    .login-button {
+        display: none;
+    }
+    .mobile-menu-icon {
+        display: block;
+    }
+    .mobile-menu-icon button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .mobile-menu ul {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+    .mobile-menu .nav-item {
+        display: block;
+        padding-top: 1.2rem;
+    }
+    .mobile-menu .login-button {
+        display: block;
+        padding: 1rem 2rem;
+    }
+    .mobile-menu .login-button button {
+        width: 100%;
+    }
+    .open {
+        display: block;
+    }
+}
+
+
+footer{
+    background-color: beige;
+    color: rgb(255, 0, 0);
+    padding: 13px;
+    margin-left: -10px;
+    margin-right: -10px;
+    text-align: center;
+    
+}
+main h4{
+    
+    
+    color: aliceblue;
+    text-align: center;
+    font-size: 35px ;
+    
+    
+}
+
+
+body {
+    height: 120vh;
+    background-position: 29vw bottom; 
+}
+
+
+
+ body .content {
+    width: 90%;
+    max-width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+
+
+
+
+
+main {
+flex: 1;
+display: flex;
+flex-direction: column;
+justify-content: center;
+max-width: 560px;    
+
+}
+#bg{
+
+
+    color: #fff;
+    text-align: center;
+    
+    width: 100%;
+    margin-top: 0px;
+   
+}
+
+main a{
+    background-color: orange;
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-size: 40px;
+    color: white;
+    margin-bottom: 90px;
+    text-decoration: none;
+    text-align: center;   
+}
+
+.hero {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 100px;
+}
+.texto{
+    
+        color: #fff;
+        background-color: transparent;
+  border: 2px solid rgba(255,255,255,0.5);
+border-radius: 10px;
+backdrop-filter: blur(15px);
+  justify-content: center;
+  
+  align-items: center;
+  height: 80%;
+  width: 90%;
+  font-size: 1.2em;
+  margin-left: 80px;
+  text-align: justify;
+ 
+
+
+}
+.texto p{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.texto #ult{
+    margin-bottom: 20px;
+}
+.texto #pri{
+    margin-top: 20px;
+
+}
+
+
+.navbar {
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+    
+
+
+.contact-btn2{
+    background-color: orange;
+    padding:1px 23px 1px 23px ;
+    font-weight: 900;
+    font-size: 15px;
+    color: white;
+    margin-bottom: 250px;
+    text-align: center;
+    text-decoration: none;
+    position: absolute;
+    margin-left: -120px;
+}
+
+ main a span {     /* PAI*/
+width: 72px;
+height: 72px;
+
+border-top-left-radius: 8px;      /*Borda topo esquerdo*/
+border-bottom-left-radius: 8px;   /*Borda Rodapé Esquerdo*/
+
+
+background-color: rgba(0, 0, 0, 0.08);   /* RGB 0-255 A 0-1 Cor com transparência*/
+
+display: flex; /* colocar um ao lado do outro*/
+align-items: center; /* alinhar itens no centro*/
+justify-content: center; /* justifique os itens no centro*/
+
+}
+    
+
+ main a strong {
+flex: 1;              /*preenchimnto automato em todo espaço vazio*/
+color: white;
+text-align: center;
+}

@@ -1,0 +1,130 @@
+<htm>
+    <head>
+        
+        <link rel="stylesheet" href="formulario.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+            </style>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH1SFo6baCvPQhLqIfpfnnn96tPtReahc"></script>
+        
+
+        <div class="content">
+            <header>
+    
+                <img src="/imagens/LOGOTIPO.png" alt="Logomarca" height="250px" width="800px" >
+                
+                    
+                    <a class="contact-btn2" href="#">Sair</a>
+               
+                </a>
+    
+            </header>
+                
+        </head>
+        <body>
+            <div class="content">
+
+                  <main>
+                    <section>
+                    <div class="form-box">
+                        <div class="form-value">
+                            <form action="">
+                                <h2>Cadastre-se</h2>
+                                <div class="inputbox">
+                                    <ion-icon name="lock-closed-outline"></ion-icon>
+             
+                                    <input type="text"required>
+                                    <label for="">Nome Completo</label>
+                                </div>
+                                <div class="inputbox">
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <input type="email" required>
+                                    <label for="">Email</label>
+                                </div>
+                                <div class="inputbox">
+                                    <ion-icon name="lock-closed-outline"></ion-icon>
+             
+                                    <input type="password"required>
+                                    <label for="">Senha</label>
+                                </div>
+                                
+                                <div class="loc">
+                                <h1>Localização e Google Maps</h1>
+                                    <p>Clique no botão abaixo para obter sua localização e envia-la:</p>
+                                    <button id="getLocationButton">Obter Localização</button>
+                                    <div id="map" style="width: 300px; height: 300px; margin-left: 95px;"></div>
+                                
+                                    <script>
+                                        var map;
+                                
+                                        // Verifica se o navegador suporta a API de Geolocalização
+                                        if ("geolocation" in navigator) {
+                                            // Obtém a referência ao botão
+                                            var getLocationButton = document.getElementById("getLocationButton");
+                                
+                                            getLocationButton.addEventListener("click", function() {
+                                                // Solicita a localização do usuário
+                                                navigator.geolocation.getCurrentPosition(function (position) {
+                                                    // Obtém as coordenadas de latitude e longitude
+                                                    var latitude = position.coords.latitude;
+                                                    var longitude = position.coords.longitude;
+                                
+                                                    // Exibe as coordenadas na página
+                                                    var mapContainer = document.getElementById("map");
+                                                    mapContainer.innerHTML = ""; // Limpa qualquer mapa anterior
+                                
+                                                    // Cria um novo mapa no elemento 'map'
+                                                    map = new google.maps.Map(mapContainer, {
+                                                        center: {lat: latitude, lng: longitude},
+                                                        zoom: 15
+                                                    });
+                                
+                                                    // Adiciona um marcador no mapa
+                                                    var marker = new google.maps.Marker({
+                                                        position: {lat: latitude, lng: longitude},
+                                                        map: map
+                                                    });
+                                                }, function (error) {
+                                                    // Tratamento de erros
+                                                    alert("Não foi possível obter a localização.");
+                                                });
+                                            });
+                                        } else {
+                                            // Navegador não suporta Geolocalização
+                                            alert("Geolocalização não suportada pelo seu navegador.");
+                                        }
+                                    </script> <br>
+                                    
+                                    </div>
+                                    
+                                    
+                                
+                                <div class="forget">
+                                    <label for=""><input type="checkbox">Lembrar login</label>
+                                    
+                                </div>
+                                <button><a href="index.html">Acessar</a></button>
+                                <div class="register">
+                                    <p>Você já possui uma conta? <a href="formulario.html">Entrar</a></p>
+                               
+                                </div>
+                                
+                            </form>
+                            
+            
+                        </div>
+                    </div>
+                    <img src="./imagens/01.png" width="900px" height="1000px" alt="">
+                </section>
+                    </main>
+            </div>
+    
+        </div>
+    
+    
+        
+    <footer>
+        &copy; Todos os Direitos reservados | IEMA - COROATÁ &copy;
+    </footer>
+    </body>
+    </html>

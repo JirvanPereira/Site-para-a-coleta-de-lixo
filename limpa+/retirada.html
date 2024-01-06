@@ -1,0 +1,137 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        </style>
+    <meta charset="utf-8">
+    <title>Coleta de Lixo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="retirada.css">
+
+
+    <header>
+                
+        <nav class="nav-bar">
+            <div class="logo">
+                <h1><img src="/imagens/LOGOTIPO.png" alt="" height="50px"width="150px"  ></h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="cronograma.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="bairro.html" class="nav-link">Cronograma</a></li>
+                    <li class="nav-item"><a href="retirada.html" class="nav-link"> Solicitar coleta</a></li>
+                </ul>
+            </div>
+            <div class="login-button">
+                <button><a href="cadastro.html">Sair</a></button>
+            </div>
+
+            <div class="mobile-menu-icon">
+                <button onclick="menuShow()"><img class="icon" src="imagens/LOGOTIPO.png" alt=""></button>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+                <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Projetos</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sobre</a></li>
+            </ul>
+
+            <div class="login-button">
+                <button><a href="#">Entrar</a></button>
+            </div>
+        </div>
+    
+    </header>
+
+   
+</head>
+
+
+<body>
+    
+  
+    <h1 id="sele">Selecione o tipo de lixo e aperte no botão para marcar <br> um ponto no mapa.</h1>
+    <style>
+        
+        #map {
+            height: 400px;
+            width: 800px;
+        }
+    </style>
+    <div class="content">
+       
+    <div id="map"></div>
+    <br>
+    <br>
+    <br>
+    <div class="content2">
+
+        <main>
+            
+    
+             
+              
+
+          </main>
+          
+          
+    </div>
+   
+
+   
+    <select id="tipoLixo">
+    
+        <option value="0">Selecione o tipo de lixo:</option>
+        <option value="Plástico">Plástico</option>
+        <option value="Papel">Papel</option>
+        <option value="Vidro">Vidro</option>
+        <option value="Metal">Metal</option>
+        <option value="Orgânico">Orgânico</option>
+    
+    </select>
+    <div class="imagem">
+        <input type="file" name="arquivos" class="btn btn-success" accept="image/png, image/jpeg" multiple />
+    </div>
+    
+
+    <button id="marcar" onclick="marcarPonto()">Marcar Ponto</button>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([-4,-44], 10); // Coordenadas iniciais e nível de zoom
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        var markers = L.layerGroup().addTo(map);
+
+        function marcarPonto() {
+            var tipoLixo = document.getElementById('tipoLixo').value;
+            map.on('click', function(e) {
+                var marker = L.marker(e.latlng).addTo(markers);
+                marker.bindPopup('Tipo de Lixo: ' + tipoLixo).openPopup();
+            });
+        }
+    </script>
+    <br>
+    
+        
+          <br>
+          <br>
+          <br>
+          
+        
+      <a class="contact-btn" href="index.html">Solicite o Recolhimento do Lixo</i></a>
+       
+    <br>
+    <br>
+    <footer>
+        &copy; Todos os Direitos reservados | IEMA - COROATÁ &copy;
+    </footer>
+</body>
+</html>

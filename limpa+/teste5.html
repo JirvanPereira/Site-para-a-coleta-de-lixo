@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Localização do Usuário</title>
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Localização do Usuário</h1>
+  <p>Clique no mapa para adicionar um marcador à sua localização.</p>
+  <div id="map"></div>
+  <button id="enviar">Enviar Marcador</button>
+
+  <script>
+    var map;
+    var marker;
+
+    function initMap() {
+      // Configurar o mapa
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 0, lng: 0 },
+        zoom: 10
+      });
+
+      // Adicionar um ouvinte de clique no mapa
+      map.addListener('click', function(event) {
+        placeMarker(event.latLng);
+      });
+
+      // Inicializar o marcador
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP
+      });
+
+      // Ouvinte de clique para o botão de enviar
+      document.getElementById('enviar').addEventListener('click', function() {
+        var position = marker.getPosition();
+        alert('Marcador enviado:\nLatitude: ' + position.lat() + '\nLongitude: ' + position.lng());
+      });
+    }
+
+    function placeMarker(location) {
+      marker.setPosition(location);
+      map.setCenter(location);
+    }
+  </script>
+
+  <!-- Inclua a API do Google Maps com sua chave de API válida -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH1SFo6baCvPQhLqIfpfnnn96tPtReahc=initMap" async defer></script>
+</body>
+</html>

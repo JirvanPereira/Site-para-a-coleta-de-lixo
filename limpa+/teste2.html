@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seleção de Bairro e Tabela de Horários</title>
+  <script>
+    // Dados de exemplo de horários por bairro
+    var horariosPorBairro = {
+      "Bairro 1": ["8:00 AM", "1:00 PM", "6:00 PM"],
+      "Bairro 2": ["9:00 AM", "2:00 PM", "7:00 PM"],
+      "Bairro 3": ["10:00 AM", "3:00 PM", "8:00 PM"],
+    };
+
+    // Função para atualizar a tabela de horários com base na seleção do bairro
+    function atualizarTabela() {
+      var bairroSelecionado = document.getElementById("bairroSelect").value;
+      var tabelaHorarios = document.getElementById("tabelaHorarios");
+
+      if (horariosPorBairro[bairroSelecionado]) {
+        tabelaHorarios.innerHTML = "<tr><th>Horário</th></tr>";
+        horariosPorBairro[bairroSelecionado].forEach(function (horario) {
+          var row = tabelaHorarios.insertRow();
+          var cell = row.insertCell(0);
+          cell.innerHTML = horario;
+        });
+      } else {
+        tabelaHorarios.innerHTML = "<tr><th>Nenhum horário disponível para este bairro.</th></tr>";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Seleção de Bairro e Tabela de Horários</h1>
+
+  <label for="bairroSelect">Selecione um bairro:</label>
+  <select id="bairroSelect" onchange="atualizarTabela()">
+    <option value="">Selecione um bairro</option>
+    <option value="Bairro 1">Bairro 1</option>
+    <option value="Bairro 2">Bairro 2</option>
+    <option value="Bairro 3">Bairro 3</option>
+  </select>
+
+  <table id="tabelaHorarios">
+    <tr>
+      <th>Horário</th>
+    </tr>
+  </table>
+</body>
+</html>

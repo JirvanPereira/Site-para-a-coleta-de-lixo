@@ -1,0 +1,334 @@
+<html>
+<head>
+    <link rel="stylesheet" href="bairro.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+      </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH1SFo6baCvPQhLqIfpfnnn96tPtReahc"></script>
+    
+<script>
+// Função para obter a localização atual do usuário
+function getLocation() {
+  // Verificar se o navegador suporta a API de geolocalização
+  if (navigator.geolocation) {
+    // Solicitar a permissão do usuário para acessar sua localização
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    // Mostrar uma mensagem de erro se o navegador não suportar a API
+    alert("Geolocalização não é suportada por este navegador.");
+  }
+}
+
+
+// Função para mostrar a posição do usuário em um mapa do Google Maps
+function showPosition(position) {
+  // Obter as coordenadas de latitude e longitude do usuário
+  var lat = position.coords.latitude;
+  var lon = position.coords.longitude;
+  // Criar uma variável para armazenar a URL do Google Maps com as coordenadas do usuário
+  var mapUrl = "https://www.google.com/maps/search/?api=1&query=" + lat + "," + lon;
+  // Criar um elemento iframe para exibir o mapa do Google Maps
+  var map = document.createElement("iframe");
+  // Definir os atributos do elemento iframe
+  
+  
+ 
+  map.setAttribute("width", "300");
+  map.setAttribute("height", "300");
+  map.setAttribute("frameborder", "0");
+  map.setAttribute("allowfullscreen", "");
+  // Adicionar o elemento iframe ao elemento div com o id "map"
+  document.getElementById("map").appendChild(map);
+  // Criar uma variável para armazenar a URL do Google Maps Geocoding API com as coordenadas do usuário e uma chave de API válida
+  var geocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lon + "&key=AIzaSyDH1SFo6baCvPQhLqIfpfnnn96tPtReahc";
+  // Fazer uma requisição HTTP GET para obter os dados de geocodificação do Google Maps Geocoding API
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", geocodeUrl, true);
+  xhr.send();
+  
+  // Definir uma função para ser executada quando a requisição for concluída
+  xhr.onload = function() {
+    // Verificar se o status da requisição é OK (200)
+    if (xhr.status == 200) {
+      // Analisar a resposta JSON da requisição
+      var response = JSON.parse(xhr.responseText);
+      // Verificar se o status da resposta é OK
+      if (response.status == "OK") {
+        // Obter o primeiro resultado da resposta, que contém o endereço formatado e os componentes de endereço
+        var result = response.results[0];
+        // Obter o endereço formatado do resultado
+        var address = result.formatted_address;
+        // Criar uma variável para armazenar o nome do bairro do usuário
+        var neighborhood = "";
+        // Percorrer os componentes de endereço do resultado
+        for (var i = 0; i < result.address_components.length; i++) {
+          // Obter o tipo e o nome do componente de endereço atual
+          var type = result.address_components[i].types[0];
+          var name = result.address_components[i].long_name;
+          // Verificar se o tipo do componente de endereço é sublocality (bairro)
+          if (type == "sublocality") {
+            // Atribuir o nome do componente de endereço à variável neighborhood
+            neighborhood = name;
+            // Interromper o loop
+            break;
+          }
+        }
+        // Mostrar uma mensagem com o endereço e o bairro do usuário
+        alert("Seu endereço é: " + address + "\nSeu bairro é: " + neighborhood);
+        // Criar uma tabela com horários fictícios para o usuário
+        var table = document.createElement("table");
+        // Definir os atributos da tabela
+        table.setAttribute("margin-right:")
+        // Criar um array com os dias da semana
+        var days = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"];
+        // Criar um array com os horários fictícios para cada dia da semana
+        var times = ["07:00 - 8:30", "10:00 - 12:00", "14:00 - 16:00", "16:00 - 18:00"];
+        // Criar uma linha de cabeçalho para a tabela
+        var header = document.createElement("tr");
+        // Criar uma célula vazia para o cabeçalho
+        var empty = document.createElement("td");
+        // Adicionar a célula vazia ao cabeçalho
+        header.appendChild(empty);
+        // Percorrer o array de dias da semana
+        for (var i = 0; i < days.length; i++) {
+          // Criar uma célula de cabeçalho para o dia da semana atual
+          var cell = document.createElement("th");
+          // Criar um elemento de texto com o nome do dia da semana atual
+          var text = document.createTextNode(days[i]);
+          // Adicionar o elemento de texto à célula de cabeçalho
+          cell.appendChild(text);
+          // Adicionar a célula de cabeçalho ao cabeçalho
+          header.appendChild(cell);
+        }
+        // Adicionar o cabeçalho à tabela
+        table.appendChild(header);
+        // Percorrer o array de horários fictícios
+        for (var i = 0; i < times.length; i++) {
+          // Criar uma linha para a tabela
+          var row = document.createElement("tr");
+          // Criar uma célula para o horário fictício atual
+          var cell = document.createElement("td");
+          // Criar um elemento de texto com o valor do horário fictício atual
+          var text = document.createTextNode(times[i]);
+          // Adicionar o elemento de texto à célula
+          cell.appendChild(text);
+          // Adicionar a célula à linha
+          row.appendChild(cell);
+          // Percorrer o array de dias da semana
+          for (var j = 0; j < days.length; j++) {
+            // Criar uma célula para a tabela
+            var cell = document.createElement("td");
+            // Gerar um número aleatório entre 0 e 1
+            var random = Math.random();
+            // Verificar se o número aleatório é menor que 0.5
+            if (random < 0.5) {
+              // Criar um elemento de texto com o valor "Disponível"
+              var text = document.createTextNode("Disponível");
+              // Definir o estilo da célula como verde
+              
+            } else {
+              // Criar um elemento de texto com o valor "Indisponível"
+              var text = document.createTextNode("Indisponível");
+              // Definir o estilo da célula como vermelho
+             
+            }
+            // Adicionar o elemento de texto à célula
+            cell.appendChild(text);
+            // Adicionar a célula à linha
+            row.appendChild(cell);
+          }
+          // Adicionar a linha à tabela
+          table.appendChild(row);
+        }
+        // Adicionar a tabela ao elemento div com o id "table"
+        document.getElementById("table").appendChild(table);
+      } else {
+        // Mostrar uma mensagem de erro se o status da resposta não for OK
+        alert("Ocorreu um erro ao obter os dados de geocodificação: " + response.status);
+      }
+    } else {
+      // Mostrar uma mensagem de erro se o status da requisição não for OK (200)
+      alert("Ocorreu um erro ao fazer a requisição: " + xhr.status);
+    }
+  };
+}
+
+// Função para mostrar uma mensagem de erro se a localização do usuário não puder ser obtida
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      alert("Usuário negou a solicitação de Geolocalização.");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Localização indisponível.");
+      break;
+    case error.TIMEOUT:
+      alert("A requisição para obter a localização do usuário expirou.");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("Ocorreu um erro desconhecido.");
+      break;
+  }
+}
+</script>
+<header>
+                
+  <nav class="nav-bar">
+      <div class="logo">
+          <h1><img src="/imagens/LOGOTIPO.png" alt="" height="50px"width="150px"  ></h1>
+      </div>
+      <div class="nav-list">
+          <ul>
+              <li class="nav-item"><a href="cronograma.html" class="nav-link">Home</a></li>
+              <li class="nav-item"><a href="bairro.html" class="nav-link">Cronograma</a></li>
+              <li class="nav-item"><a href="retirada.html" class="nav-link"> Solicitar coleta</a></li>
+          </ul>
+      </div>
+      <div class="login-button">
+          <button><a href="cadastro.html">Sair</a></button>
+      </div>
+
+      <div class="mobile-menu-icon">
+          <button onclick="menuShow()"><img class="icon" src="imagens/LOGOTIPO.png" alt=""></button>
+      </div>
+  </nav>
+  <div class="mobile-menu">
+      <ul>
+          <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Projetos</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Sobre</a></li>
+      </ul>
+
+      <div class="login-button">
+          <button><a href="#">Entrar</a></button>
+      </div>
+  </div>
+
+</header>
+</head>
+<body>
+ 
+<br>
+<h1 id="sele">Cronograma de coleta de lixo</h1>
+<p>Clique no botão abaixo para obter sua localização atual, mostrar um mapa do Google Maps com sua posição, obter seu endereço e bairro e abrir uma tabela com horários de seu bairro.</p> <br><br>
+
+
+<button id="click" onclick="getLocation()">Gerar Tabela</button> <br> <br>
+<div id="map"></div> <br>
+<div id="table"></div>
+<table>
+  <tr>
+    <th>Atividade</th>
+    <th>Data</th>
+    <th>Horário</th>
+    <th>Status</th>
+
+  </tr>
+  <tr>
+    <td>Coleta de lixo</td>
+    <td>Domingo</td>
+    <td></td>
+    <td>Indisponivel</td>
+    
+  </tr>
+  <tr>
+    <td>Coleta de lixo</td>
+    <td>Segunda-Feira</td>
+    <td>7:20 - 8:00</td>
+    <td>Disponivel</td>
+  </tr>
+  <tr>
+    <td>Coleta de lixo</td>
+    <td>Terça-Feira</td>
+    <td>7:20 - 8:00</td>
+    <td>Disponivel</td>
+  </tr>
+  <tr>
+    <td>Coleta de lixo</td>
+    <td>Quarta-Feira</td>
+    <td>1:30 - 2:00</td>
+    <td>Disponivel</td>
+  </tr>
+  <tr>
+    <td>Coleta de lixo</td>
+    <td>Quinta-Feira</td>
+    <td>7:20 - 8:00</td>
+    <td>Disponivel</td>
+  </tr>
+  <tr>
+    <td>Coleta de lixo</td>
+    <td>Sexta-Feira</td>
+    <td>10:00 - 10:30</td>
+    <td>Disponivel</td>
+  </tr>
+  <tr>
+    <td>Coleta de lixo</td>
+    <td>Sábado</td>
+    <td></td>
+    <td>Indisponivel</td>
+  </tr>
+  
+</table>
+
+<br>
+<div class="loc">
+                               
+                                    <button id="getLocationButton">Obter Localização</button>
+                                    <div id="map" style="width: 0px; height: 300px; margin-right: 20px;"></div>
+                                
+                                    <script>
+                                        var map;
+                                        function getLocation() {
+  // Verificar se o navegador suporta a API de geolocalização
+  if (navigator.geolocation) {
+    // Solicitar a permissão do usuário para acessar sua localização
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    // Mostrar uma mensagem de erro se o navegador não suportar a API
+    alert("Geolocalização não é suportada por este navegador.");
+  }
+}
+                                
+                                        // Verifica se o navegador suporta a API de Geolocalização
+                                        if ("geolocation" in navigator) {
+                                            // Obtém a referência ao botão
+                                            var getLocationButton = document.getElementById("getLocationButton");
+                                
+                                            getLocationButton.addEventListener("click", function() {
+                                                // Solicita a localização do usuário
+                                                navigator.geolocation.getCurrentPosition(function (position) {
+                                                    // Obtém as coordenadas de latitude e longitude
+                                                    var latitude = position.coords.latitude;
+                                                    var longitude = position.coords.longitude;
+                                
+                                                    // Exibe as coordenadas na página
+                                                    var mapContainer = document.getElementById("map");
+                                                    mapContainer.innerHTML = ""; // Limpa qualquer mapa anterior
+                                
+                                                    // Cria um novo mapa no elemento 'map'
+                                                    map = new google.maps.Map(mapContainer, {
+                                                        center: {lat: latitude, lng: longitude},
+                                                        zoom: 15
+                                                    });
+                                
+                                                    // Adiciona um marcador no mapa
+                                                    var marker = new google.maps.Marker({
+                                                        position: {lat: latitude, lng: longitude},
+                                                        map: map
+                                                    });
+                                                }, function (error) {
+                                                    // Tratamento de erros
+                                                    alert("Não foi possível obter a localização.");
+                                                });
+                                            });
+                                        } else {
+                                            // Navegador não suporta Geolocalização
+                                            alert("Geolocalização não suportada pelo seu navegador.");
+                                        }
+                                    </script> 
+                                   
+                                    <footer>
+                                      &copy; Todos os Direitos reservados | IEMA - COROATÁ &copy;
+                                  </footer>
+</body>
+</html>
